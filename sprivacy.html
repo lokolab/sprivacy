@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>sprivacy</title>
+    </head>
+    <body>
+        <h1>sprivacy</h1>
+
+        <p>Send automatic requests to websites in order to protect privacy.</p>
+
+        <p>First, off the referer in Firefox:
+        <code>about:config -&gt; network.http.sendRefererHeader -&gt; 0</code><br/>
+        In Chrome see http://chrome.google.com/webstore/detail/referer-control/hnkcfpcejkafcihlgbojoidoihckciin</p>
+
+        <p>Second, open source page and enter your own links.</p>
+
+        <p>Finally, open a new browser window and view the page.
+        Requests will be sent randomly in the interval declared
+        in the source program (default 1-10 min.).</p>
+
+        <hr/>
+
+        <p>Requests counter: <span id="counter">0</span></p>
+        <p>Seconds to the next request: <span id="next"></span></p>
+        <p>Requests URLs:</p>
+        <ol id="urls"></ol>
+        <script>
+            if (document.referrer !== '') {
+                alert('You have to turn off the "referer" in your browser.');
+            }
+            var wwwUrls = [
+                'http://example.com',
+                'http://example.com/blabla',
+                // Add links here.
+                // ...
+            ];
+            var searchUrls = [
+                'http://example.com/search?q=abc',
+                'http://example.com/search?q=xyz',
+                // Add links here.
+                // ...
+            ];
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            function run(rand) {
+                var num = document.getElementById('counter').innerHTML;
+                document.getElementById('counter').innerHTML = parseFloat(num) + 1;
+                var urls = rand % 2 === 0 ? wwwUrls : searchUrls;
+                var url = urls[getRandomInt(0, urls.length - 1)];
+                win = window.open(url, '_blank');
+                document.getElementById('urls').innerHTML += '<li>' + url;
+                window.setTimeout(function() {
+                    win.close();
+                }, getRandomInt(10000, 50000));
+            }
+            // See http://stackoverflow.com/a/6962808
+            timer = null;
+            (function loop() {
+                var min = 60000;  // 1 minute
+                var max = 600000; // 10 minutes
+                var rand = Math.round(Math.random() * (max - min)) + min;
+                document.getElementById('next').innerHTML = Math.round(rand / 1000);
+                if (timer) {
+                    clearInterval(timer);
+                }
+                timer = window.setInterval(function() {
+                    var num = document.getElementById('next').innerHTML;
+                    document.getElementById('next').innerHTML = num - 1;
+                }, 1000);
+                window.setTimeout(function() {
+                    run(rand);
+                    loop();
+                }, rand);
+            }());
+        </script>
+    </body>
+</html>
+
