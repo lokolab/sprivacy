@@ -1,7 +1,7 @@
 sprivacy
 ========
 **This is development version.<br> For production version (relase) see
-<https://github.com/lokolab/sprivacy/tree/v0.0.1>**
+<https://github.com/lokolab/sprivacy/releases/v0.0.1>**
 - Version: 0.0.1-dev
 - Technologies:
   - HTML
