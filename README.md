@@ -9,7 +9,7 @@ sprivacy
 - Compatibility:
   - Chrome 45+
   - Firefox 46+
-  - Probably other browsers are also compatible.
+  - Other browsers should be compatible.
 - Copyright / Authors:
   - Krystian Pietruszka <kpietru@lokolab.net>
 - Licenses:
