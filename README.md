@@ -10,8 +10,6 @@ sprivacy
   - Chrome 45+
   - Firefox 46+
   - Probably other browsers are also compatible.
-- Dependencies:
-  - null
 - Copyright / Authors:
   - Krystian Pietruszka <kpietru@lokolab.net>
 - Licenses:
