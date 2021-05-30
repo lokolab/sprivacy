@@ -40,7 +40,7 @@ First, modify the file "sprivacy.html"*:
     ];
     ...
 
-Second, in the browser, enter `http://localhost/sprivacy.html`
+Second, in the browser, enter file `sprivacy.html`
 
 ____________________________
 [*] URLs should be modified.
