@@ -23,7 +23,7 @@ ________________________________________________________________
 Example usage
 -------------
 
-First, modify the file "sprivacy.html"*:
+First, modify the file `sprivacy.html`*:
 
     ...
     var wwwUrls = [
